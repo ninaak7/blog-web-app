@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script rel="stylesheet" src="../../static/styles/main.css"></script>
+        <% if(locals.name){ %>
+        <title>
+            <%= name %>'s Blog
+        </title>
+        <% } else { %>
+        <title>My Blog</title>
+        <% } %>
+    </head>
+    <body>
+    <% if(locals.name){ %>
+        <h1>
+            <%= name %>'s Blog
+        </h1>
+    <% } else { %>
+        <title>My Blog</title>
+    <% } %>
+        <a href="/logout">Logout</a>
