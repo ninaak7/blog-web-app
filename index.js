@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import fs from 'fs';
-import path from 'path';
 
 const app = express();
 const port = 3000;
@@ -115,8 +114,14 @@ app.post("/save-post/:id", (req, res) => {
     res.redirect("/index");
 });
 
-app.post("/delete-post", (req, res) => {
-    //
+app.get("/delete-post/:id", (req, res) => {
+    const posts = readPosts();
+    const postId = req.params.id;
+
+    const updatedPosts = posts.filter(post => post.id !== postId);
+    savePosts(updatedPosts);
+
+    res.redirect("/index");
 });
 
 app.listen(port, () => {
